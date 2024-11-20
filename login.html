@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>login</h3><br>
+    <form action = "{% url 'login' %}" method="POST">
+    
+    <p style="color: red;" id="usererror"></p>
+    <input type="text" id="username" name="userName" placeholder="username"/><br>
+    <p style="color: red;" id="passwerror"></p>
+    <input type="password" id="userpassword" name="userPassword" placeholder="userpassword"/><br>
+    <button class="btn btn-md" type="submit" style="background-color: forestgreen; color: black;" onclick="return validate_login()">login</button>
+    </form> 
+
+    <script>
+        function validate_login()
+        {
+            status = 1;
+            username = document.getElementById("username")
+            password = document.getElementById("userpassword")
+            if(username.value == ""){
+                username.style.borderColor = "#FF0000";
+                status = 0;
+                usererror.style.display = "block";
+                usererror.style.color = "#FF0000";
+                usererror.innerHTML = "Please enter username"
+            }
+            else{
+                username.style.borderColor = "#FF0000";
+                usererror.style.display = "none";
+                status = 1;
+
+            }
+            if(password.value == ""){
+                password.style.borderColor = "#FF0000";
+                status = 0;
+                pswderror.style.display = "block";
+                pswderror.style.color = "#FF0000";
+                pswderror.innerHTML = "Please enter password"
+            }
+            else{
+                password.style.borderColor = "#FF0000";
+                pswderror.style.display = "none";
+                status = 1;
+
+            }
+            if(status = 0){
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
